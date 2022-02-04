@@ -106,8 +106,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
   const scoreText = document.querySelector("#score");
+  const timer = document.querySelector("#time");
 //this function can be used for both Task 2 and Task 5 as requirements are the same(end Quiz, highlight correct answers, and display the score)
   const endQuiz = () => {
+    console.log('Ending quiz');
     let userScore = calculateScore();
     scoreText.innerHTML = "Quiz has ended. Your total score is " + userScore;
 
@@ -122,8 +124,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const btnSubmit = document.querySelector("#btnSubmit");
   btnSubmit.addEventListener("click", (event) => {
     endQuiz();
-    // Task 5: if the user has submitted the answers before timeOut, clear the timeOut function
-    clearTimeout(myTimeout);
   });
 
   // code for task 4 goes here
@@ -134,7 +134,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   //code for task 5 goes here
   const btnStart = document.querySelector("#startButton");
-  const timer = document.querySelector("#time");
   btnStart.addEventListener("click", (event) => {
     myTimeout = setTimeout(endQuiz, 120000);
 
@@ -149,9 +148,6 @@ window.addEventListener('DOMContentLoaded', () => {
       if (sec == 00) {
         minute--;
         sec = 59;
-        if (minute == 0) {
-          minute = 1;
-        }
       }
     }, 1000);
   });
