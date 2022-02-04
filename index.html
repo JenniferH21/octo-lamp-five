@@ -22,7 +22,7 @@
         <div class="card-body">
           <h5 class="card-title">Test your knowledge</h5>
           <p class="card-text">Some quick description about the quiz .</p>
-          <a class="btn btn-primary">Start</a>
+          <a class="btn btn-primary" id="startButton">Start</a>
         </div>
       </div>
     </div>
@@ -31,8 +31,13 @@
     <div class="container" id="quizBlock" style="display: none">
       <div class="mb-5">
         <h2>Test your knowledge</h2>
-        - Time remaining <span id="time">01:00</span>
+        - Time remaining <span id="time"></span>
+
+      <br>
+      <span id="score" style="font-size: larger; font-weight: 500;"></span>
+
       </div>
+
       <div id="quizWrap"></div>
 
       <div>
@@ -42,7 +47,6 @@
         <button type="button" class="btn btn-primary" id="btnReset">
           Reset Quiz
         </button>
-        <span id="score"></span>
       </div>
     </div>
 
