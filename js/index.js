@@ -85,13 +85,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (quizItem.a == i) {
           //change background color of li element here
-          liElement.style.backgroundColor = "red";
+          liElement.style.backgroundColor = "yellow";
         }
 
         if (radioElement.checked) {
           // code for task 1 goes here.
-          // if selected radio value is same as the answer, then increase the score
-          if (quizItem.o[quizItem.a] === radioElement.value) {
+          // if selected radio value is correct, then increase the score
+          if (quizItem.a == i) {
             score += 1;
           }
         }
@@ -104,10 +104,10 @@ window.addEventListener('DOMContentLoaded', () => {
   // call the displayQuiz function
   displayQuiz();
 
-  //this function can be used for both Task 2 and Task 5 as requirements are the same,
-  //i.e. calculate the score, highlight correct answer, and display the score
+
+  const scoreText = document.querySelector("#score");
+//this function can be used for both Task 2 and Task 5 as requirements are the same(end Quiz, highlight correct answers, and display the score)
   const endQuiz = () => {
-    console.log('Ending the quiz');
     let userScore = calculateScore();
     scoreText.innerHTML = "Quiz has ended. Your total score is " + userScore;
 
@@ -118,13 +118,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let myTimeout;
 
-  // code for task 2 goes here.
-  const scoreText = document.querySelector("#score");
+  // code for task 2 goes here
   const btnSubmit = document.querySelector("#btnSubmit");
   btnSubmit.addEventListener("click", (event) => {
     endQuiz();
-
-    // Task 5: if the user has submitted the answers before timeOut, then we need to clear the timeOut function
+    // Task 5: if the user has submitted the answers before timeOut, clear the timeOut function
     clearTimeout(myTimeout);
   });
 
@@ -138,10 +136,11 @@ window.addEventListener('DOMContentLoaded', () => {
   const btnStart = document.querySelector("#startButton");
   const timer = document.querySelector("#time");
   btnStart.addEventListener("click", (event) => {
-    myTimeout = setTimeout(endQuiz, 300000);
+    myTimeout = setTimeout(endQuiz, 120000);
 
+    //Optional: Add a "0" at front when the Second number is single-digit.
     //https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
-    let minute = 4;
+    let minute = 1;
     let sec = 59;
     setInterval(function () {
       secText = (sec > 10) ? sec : "0" + sec;
@@ -151,7 +150,7 @@ window.addEventListener('DOMContentLoaded', () => {
         minute--;
         sec = 59;
         if (minute == 0) {
-          minute = 4;
+          minute = 1;
         }
       }
     }, 1000);
